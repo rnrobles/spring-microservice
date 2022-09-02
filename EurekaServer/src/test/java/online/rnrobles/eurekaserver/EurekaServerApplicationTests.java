@@ -1,10 +1,10 @@
-package online.rnrobles.serverdiscovery;
+package online.rnrobles.eurekaserver;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ServerRegistryDiscoveryApplicationTests {
+class EurekaServerApplicationTests {
 
 	@Test
 	void contextLoads() {
