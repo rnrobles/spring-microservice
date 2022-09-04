@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.http.ResponseEntity;
 
+import online.rnrobles.redservicefeignclient.clients.BlueServiceClient;
 import online.rnrobles.redservicefeignclient.clients.RedServiceClient;
 
 @SpringBootApplication
@@ -18,6 +19,9 @@ public class RedServiceFeignClientApplication implements ApplicationRunner {
 
 	@Autowired
 	private RedServiceClient redServiceClient;
+	
+	@Autowired
+	private BlueServiceClient blueServiceClient;
 
 	private static final Logger log = LoggerFactory.getLogger(RedServiceFeignClientApplication.class);
 
@@ -28,10 +32,13 @@ public class RedServiceFeignClientApplication implements ApplicationRunner {
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		for (int i = 0; i < 10; i++) {
-			ResponseEntity<String> responseEntity = redServiceClient.getApplicationName();
-			log.info("Status {}", responseEntity.getStatusCode());
-			String body = responseEntity.getBody();
-			log.info("Body {}", body);
+			ResponseEntity<String> responseEntity = redServiceClient.getApplicationName();	
+			log.info("Status {}, Body {}", responseEntity.getStatusCode(), responseEntity.getBody());
+		}
+		
+		for (int i = 0; i < 10; i++) {
+			ResponseEntity<String> responseEntity = blueServiceClient.getApplicationName();
+			log.info("Status {}, Body {}", responseEntity.getStatusCode(), responseEntity.getBody());
 		}
 
 	}
