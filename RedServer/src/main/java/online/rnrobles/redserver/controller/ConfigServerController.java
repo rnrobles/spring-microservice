@@ -17,10 +17,15 @@ public class ConfigServerController {
 
 	@Autowired
 	ConfigServerClient config;
-	
+
 	@GetMapping
-	public String getConfiguracion()
-	{
+	public String getConfiguracion() {
+		log.info(config.getType());
+		return config.getType();
+	}
+
+	@GetMapping("/name")
+	public String nameService() {
 		log.info(config.getName());
 		return config.getName();
 	}

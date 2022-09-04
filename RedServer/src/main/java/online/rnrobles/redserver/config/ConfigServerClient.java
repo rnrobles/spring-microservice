@@ -9,7 +9,19 @@ import org.springframework.stereotype.Component;
 public class ConfigServerClient {
 	
 	@Value("${application.name}")
+	private String type;
+
+	@Value("${spring.application.name}")
 	private String name;
+
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
 
 	public String getName() {
 		return name;
