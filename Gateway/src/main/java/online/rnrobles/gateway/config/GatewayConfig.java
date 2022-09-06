@@ -57,12 +57,6 @@ public class GatewayConfig {
 				.build();
 	}
 
-	public PredicateSpec routeCircuitBreaker(PredicateSpec pre) {
-
-		return pre;
-
-	}
-
 	public GatewayFilterSpec redirectCircuitBreaker(GatewayFilterSpec f, String urlRewrite, String urlForward) {
 		f.rewritePath( urlRewrite + "/(?<segment>.*)", "/${segment}");
 		f.circuitBreaker(c -> {
